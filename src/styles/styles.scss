@@ -1,0 +1,76 @@
+@import "common";
+//@import "mixins";
+//@import "variables";
+
+.abz {
+  &__navbar {
+    height: 60px;
+    @include flex(space-between, center);
+    &_buttons {
+      button {
+        &:first-child {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  &__fs {
+    &-wrapper {
+      background: url("../assets/images/fs.png") no-repeat center;
+      background-size: cover;
+      height: 650px;
+    }
+
+    &-container {
+        @include flex(center, center, column);
+        height: 100%;
+    }
+
+    &-title {
+      @include text($H400, 400, $colorWhite) {
+        line-height: $LH400;
+        text-align: center;
+      }
+      margin-bottom: 21px;
+      max-width: 380px;
+    }
+
+    &-text {
+      @include text($H160, 400, $colorWhite) {
+        line-height: $LH160;
+        text-align: center;
+      }
+      margin-bottom: 32px;
+      max-width: 380px;
+    }
+  }
+
+  &__cards-wrapper {
+    padding: 140px 0;
+  }
+
+  &__card {
+    width: 370px;
+    height: 254px;
+    padding: 20px;
+    @include flex(center, center, column);
+
+    &_image {
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+
+    &_name {
+      @include text($H160, 400, $colorBlack) {
+        line-height: $LH160;
+      }
+      margin-bottom: 20px;
+    }
+    &_position, &_email, &_phone {
+      @include text($H160, 400, $colorBlack) {
+        line-height: $LH160;
+      }
+    }
+  }
+}
