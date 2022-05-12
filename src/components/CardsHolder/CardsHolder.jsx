@@ -2,20 +2,33 @@ import Card from "../Card/Card";
 import ButtonPrimary from "../common/Button/ButtonPrimary";
 import {getUsers} from "../../helpers/requests";
 import {useEffect, useState} from "react";
+import {usersFiler} from "../../helpers/usersFilter";
+import Preloader from "../../assets/images/Preloader.svg";
 
 
 
 function CardsHolder() {
 
     const [users, setUsers] = useState([]);
+    const [isLastPage, setIsLastPage] = useState(false);
+    const [pageCounter, setPageCounter] = useState(-1);
     const [page, setPage] = useState(1);
+    const [isLoading, setIsLoading] = useState(false);
 
     // eslint-disable-next-line no-unused-expressions
     useEffect(() => {
         getUsers(page)
             .then(res => {
-                console.log(res)
-                setUsers(res.data?.users);
+                if(res.data?.total_pages > 1) {
+                    setPageCounter(res.data?.total_pages);
+                }
+
+                if (pageCounter === page) {
+                    setIsLastPage(true);
+                }
+
+                usersFiler(users, setUsers, res.data?.users);
+                setIsLoading(false);
             })
             .catch(err => {
                 console.log(err);
@@ -23,19 +36,27 @@ function CardsHolder() {
     }, [page]);
 
     function handleClick() {
+        setIsLoading(true);
         setPage(page + 1);
-        console.log('clicked')
     }
 
     return (
         <div className="abz__cards-wrapper container">
-            <h2 className="abz__cards-title">Working with GET request</h2>
+            <h2 className="abz__block-title">Working with GET request</h2>
+            <div className="abz__cards-container">
+                {
+                    users && users.map(user => {
+                        return <Card key={user?.id} user={user}/>
+                    })
+                }
+                {
+                    isLoading && <img className="abz__loader" src={Preloader} alt="preloader"/>
+                }
+            </div>
             {
-                users.map(user => {
-                    return <Card key={user?.id} user={user}/>
-                })
+                isLastPage ? <div className="abz__cards-end"></div> : <ButtonPrimary type="button" onClick={handleClick}>Show more</ButtonPrimary>
             }
-            <ButtonPrimary type="button" onClick={handleClick}>Show more</ButtonPrimary>
+
         </div>
     );
 }

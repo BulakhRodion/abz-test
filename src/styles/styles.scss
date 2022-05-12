@@ -48,15 +48,45 @@
 
   &__cards-wrapper {
     padding: 140px 0;
+    @include flex(center, center, column);
+    button {
+      margin-top: 50px;
+    }
+  }
+
+  &__block-title {
+    @include text($H400, 400, $colorBlack) {
+      line-height: $LH400;
+      text-align: center;
+    }
+    margin-bottom: 50px;
+  }
+
+  &__cards-container {
+    @include flex(center);
+    flex-wrap: wrap;
+  }
+
+  &__cards-end {
+    display: none;
   }
 
   &__card {
-    width: 370px;
-    height: 254px;
+    width: 330px;
+    height: 214px;
     padding: 20px;
+    margin-right: 29px;
     @include flex(center, center, column);
+    &:nth-child(3n+3) {
+      margin-right: 0;
+    }
+    &:nth-child(n + 4) {
+      margin-top: 29px;
+    }
 
     &_image {
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
       margin-bottom: 20px;
     }
@@ -65,12 +95,186 @@
       @include text($H160, 400, $colorBlack) {
         line-height: $LH160;
       }
+      margin-top: 0;
       margin-bottom: 20px;
+      max-width: 330px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      cursor: pointer;
     }
+
     &_position, &_email, &_phone {
       @include text($H160, 400, $colorBlack) {
         line-height: $LH160;
       }
+      max-width: 330px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0;
+      cursor: pointer;
+    }
+  }
+
+  &__tooltip {
+    z-index: 100;
+    display: none;
+    padding: 3px 16px;
+    background-color: rgba($colorBlack, 0.87);
+    border-radius: 4px;
+    position: absolute;
+    top: 26px;
+
+    &_content{
+      @include text($H160, 400, $colorWhite) {
+        line-height: $LH160;
+      }
+    }
+  }
+
+  &__card_info {
+    position: relative;
+    width: 100%;
+    @include flex(center);
+  }
+
+  .tooltip-active + &__tooltip {
+    display: block;
+  }
+
+  &__post-block {
+    @include flex(center, center, column);
+  }
+
+  &__form {
+    margin-bottom: 50px;
+    @include flex(center, flex-start, column);
+    &_btn-wrapper {
+      width: 100%;
+      @include flex(center, center);
+      button:disabled {
+        background-color: $colorDisabled;
+        color: rgba($colorWhite, 0.87);
+      }
+    }
+  }
+
+  &__form-group {
+    position: relative;
+    margin-bottom: 50px;
+    @include flex(center, flex-start, column);
+    &--radio {
+      margin-bottom: 13px;
+    }
+  }
+
+  &__input {
+    width: 346px;
+    height: 26px;
+    border-radius: 4px;
+    border: 1px solid #D0CFCF;
+    outline: none;
+    padding: 14px 16px;
+    @include text($H160, 400, $colorBlack) {
+      line-height: $LH160;
+    }
+
+    &.input-active + .abz__label {
+      top: 0;
+    }
+  }
+
+  &__input-helper {
+    position: absolute;
+    bottom: -16px;
+    @include text($H120, 400, $colorFormGrey) {
+      line-height: $LH120;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    padding: 2px 4px;
+    @include text($H160, 400, $colorFormGrey) {
+      line-height: $LH160;
+    }
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: $colorWhite;
+  }
+
+  &__position {
+    margin-bottom: 14px;
+  }
+
+  &__radio-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  &__radio-container {
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+  }
+
+  &__radio-custom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+    border: 1px solid $colorFormRadio;
+  }
+
+  &__radio-container:hover input ~ &__radio-custom {
+    background-color: $colorWhite;
+    border-color: $colorSecondary;
+  }
+
+  &__radio-container input:checked ~ &__radio-custom {
+    background-color: $colorWhite;
+    border-color: $colorSecondary;
+  }
+
+  &__radio-custom:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .container input:checked ~ &__radio-custom:after {
+    display: block;
+  }
+
+  &__radio-container &__radio-custom:after {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: $colorSecondary;
+  }
+
+  &__radio-name {
+    @include text($H160, 400, $colorBlack) {
+      line-height: $LH160;
     }
   }
 }

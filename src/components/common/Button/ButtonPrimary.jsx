@@ -1,6 +1,6 @@
-function ButtonPrimary({children, onClick}) {
+function ButtonPrimary({children, onClick, type, disabled}) {
     return (
-        <button onClick={onClick} className="button-primary">
+        <button type={type} onClick={onClick} disabled={disabled || false} className="button-primary">
             {children}
         </button>
     );
