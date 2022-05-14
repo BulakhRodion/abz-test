@@ -7,13 +7,22 @@ import Preloader from "../../assets/images/Preloader.svg";
 
 
 
-function CardsHolder() {
+function CardsHolder({displayUser}) {
 
     const [users, setUsers] = useState([]);
     const [isLastPage, setIsLastPage] = useState(false);
     const [pageCounter, setPageCounter] = useState(-1);
     const [page, setPage] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        if(displayUser) {
+            setUsers([]);
+            setPage(1);
+        } else {
+            return undefined;
+        }
+    }, [displayUser]);
 
     // eslint-disable-next-line no-unused-expressions
     useEffect(() => {
@@ -56,7 +65,6 @@ function CardsHolder() {
             {
                 isLastPage ? <div className="abz__cards-end"></div> : <ButtonPrimary type="button" onClick={handleClick}>Show more</ButtonPrimary>
             }
-
         </div>
     );
 }

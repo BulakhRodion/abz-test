@@ -6,7 +6,7 @@ const EMAIL_REGEX = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-
 export const isNameValid = (value, name, errors, setErrors) => {
     let error = '';
     if (value.length < 2 || value.length > 20) {
-        error = "Username should contain 2-60 characters";
+        error = "Username should contain 2-20 characters";
         return setErrors({...errors, [name]: error});
     }
     return setErrors({...errors, [name]: error});
@@ -48,6 +48,5 @@ export const isPhotoValid = (value, name, errors, setErrors) => {
 };
 
 export const isFormValid = (errors) => {
-    console.log(errors);
     return !Object.values(errors).every(error => error === '');
 };

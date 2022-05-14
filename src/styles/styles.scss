@@ -183,6 +183,10 @@
     &.input-active + .abz__label {
       top: 0;
     }
+
+    &--file {
+      display: none;
+    }
   }
 
   &__input-helper {
@@ -212,6 +216,10 @@
     top: 50%;
     transform: translateY(-50%);
     background-color: $colorWhite;
+
+    &--holder{
+      left: 92px;
+    }
   }
 
   &__position {
@@ -286,4 +294,25 @@
       line-height: $LH160;
     }
   }
+
+  &__upload-btn {
+    width: 83px;
+    height: 54px;
+    border: 1px solid rgba(0, 0, 0, 0.87);
+    border-radius: 4px 0 0 4px;
+    color: $colorBlack;
+    cursor: pointer;
+  }
+
+  &__form-success {
+    position: fixed;
+    @include flex(center, center, column);
+    overflow-y: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.75);
+  }
+
 }

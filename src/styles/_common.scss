@@ -44,8 +44,16 @@ ul, ol {
   }
 }
 
+._hide {
+  display: none !important;
+}
+
 .abz__loader {
   animation: spin 1s infinite linear;
+}
+
+body.show-success {
+  overflow-y: hidden;
 }
 
 @keyframes spin {
