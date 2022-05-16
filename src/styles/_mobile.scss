@@ -1,0 +1,46 @@
+@import "common";
+
+.container {
+  padding: 0;
+}
+
+.abz {
+  &__navbar {
+    padding: 0 16px;
+  }
+
+  &__fs {
+    &-wrapper {
+      padding: 0 15px;
+      height: 500px;
+    }
+  }
+
+  &__cards-wrapper {
+    padding: 140px 0;
+  }
+
+  &__block-title {
+    max-width: 328px;
+  }
+
+  &__card {
+    width: 288px;
+    height: 214px;
+    margin-right: 0;
+    &:nth-child(n + 2) {
+      margin-top: 20px;
+    }
+  }
+
+ &__post-block {
+   padding: 0 15px;
+ }
+
+  &__input {
+    width: 296px;
+    &--holder {
+      width: 213px;
+    }
+  }
+}

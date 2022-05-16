@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Card from "../Card/Card";
 import ButtonPrimary from "../common/Button/ButtonPrimary";
 import {getUsers} from "../../helpers/requests";
@@ -59,7 +60,10 @@ function CardsHolder({displayUser}) {
                     })
                 }
                 {
-                    isLoading && <img className="abz__loader" src={Preloader} alt="preloader"/>
+                    isLoading &&
+                    <div className="abz__loader-wrapper">
+                        <img className="abz__loader" src={Preloader} alt="preloader"/>
+                    </div>
                 }
             </div>
             {

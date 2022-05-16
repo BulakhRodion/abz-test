@@ -1,0 +1,33 @@
+@import "common";
+
+.container {
+  padding: 0;
+}
+
+.abz {
+  &__navbar {
+    padding: 0 32px;
+  }
+
+  &__fs {
+    &-wrapper {
+      height: 500px;
+    }
+  }
+
+  &__cards-wrapper {
+    padding: 140px 0;
+  }
+
+  &__card {
+    width: 304px;
+    height: 214px;
+    margin-right: 16px;
+    &:nth-child(2n+2) {
+      margin-right: 0;
+    }
+    &:nth-child(n + 3) {
+      margin-top: 16px;
+    }
+  }
+}
