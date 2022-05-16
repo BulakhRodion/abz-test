@@ -4,7 +4,7 @@ import ButtonPrimary from "../common/Button/ButtonPrimary";
 function Navbar() {
     return (
         <nav className="abz__navbar">
-            <a href="/" className="abz__navbar_logo-wrapper">
+            <a href="/" aria-label="Home" className="abz__navbar_logo-wrapper">
                 <LogoIcon className="abz__navbar_logo" />
             </a>
             <div className="abz__navbar_buttons">

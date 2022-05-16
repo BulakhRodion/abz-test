@@ -87,22 +87,22 @@ function Form({parentCallback}) {
             <h2 className="abz__block-title">Working with POST request</h2>
             <form className={!isSend ? "abz__form" : "abz__form _hide"} onSubmit={handleSubmit}>
                 <div className="abz__form-group">
-                    <input className="abz__input" type='text' required={true} name='name' onChange={handleChange} value={values['name']} onFocus={showFocused} onBlur={hideFocused}/>
-                    <label className="abz__label">Your name</label>
+                    <input className="abz__input" style={errors.name ? {borderColor: '#CB3D40'} : {borderColor: '#D0CFCF'}} id="formName" type='text' required={true} name='name' onChange={handleChange} value={values['name']} onFocus={showFocused} onBlur={hideFocused}/>
+                    <label className="abz__label" style={errors.name ? {color: '#CB3D40'} : {color: '#D0CFCF'}} htmlFor="formName">Your name</label>
                     {
                         errors.name && <FormError message={errors.name}/>
                     }
                 </div>
                 <div className="abz__form-group">
-                    <input className="abz__input" type='email' required={true} name='email' onChange={handleChange} onFocus={showFocused} value={values['email']} onBlur={hideFocused}/>
-                    <label className="abz__label">Email</label>
+                    <input className="abz__input" style={errors.email ? {borderColor: '#CB3D40'} : {borderColor: '#D0CFCF'}} id="formEmail" type='email' required={true} name='email' onChange={handleChange} onFocus={showFocused} value={values['email']} onBlur={hideFocused}/>
+                    <label className="abz__label" style={errors.email ? {color: '#CB3D40'} : {color: '#D0CFCF'}} htmlFor="formEmail">Email</label>
                     {
                         errors.email && <FormError message={errors.email}/>
                     }
                 </div>
                 <div className="abz__form-group">
-                    <input className="abz__input" type='tel' required={true} name='phone' onChange={handleChange} onFocus={showFocused} value={values['phone']} onBlur={hideFocused}/>
-                    <label className="abz__label">Phone</label>
+                    <input className="abz__input" style={errors.phone ? {borderColor: '#CB3D40'} : {borderColor: '#D0CFCF'}} id="formPhone" type='tel' required={true} name='phone' onChange={handleChange} onFocus={showFocused} value={values['phone']} onBlur={hideFocused}/>
+                    <label className="abz__label" style={errors.phone ? {color: '#CB3D40'} : {color: '#D0CFCF'}} htmlFor="formPhone">Phone</label>
                     {
                         errors.phone ? <FormError message={errors.phone}/> : <small className="abz__input-helper">+38 (XXX) XXX - XX - XX</small>
                     }
@@ -119,10 +119,10 @@ function Form({parentCallback}) {
                         <button type="button" className="abz__upload-btn" onClick={openFileDialog}>
                             Upload
                         </button>
-                        <input className="abz__input abz__input--holder" type='text'/>
-                        <label className="abz__label abz__label--holder">{values.photo.name || 'Upload your photo'}</label>
+                        <div className="abz__input abz__input--holder" style={errors.photo ? {borderColor: '#CB3D40'} : {borderColor: '#D0CFCF'}}></div>
+                        <label className="abz__label abz__label--holder" style={errors.photo ? {color: '#CB3D40'} : {color: '#D0CFCF'}} htmlFor="formFile">{values.photo.name || 'Upload your photo'}</label>
                     </div>
-                    <input className="abz__input abz__input--file" type='file' ref={fileInput} required={true} name='photo' onChange={handleChange} onFocus={showFocused} onBlur={hideFocused}/>
+                    <input className="abz__input abz__input--file" id="formFile" type='file' ref={fileInput} required={true} name='photo' onChange={handleChange} onFocus={showFocused} onBlur={hideFocused}/>
                     {
                         errors.photo && <FormError message={errors.photo}/>
                     }

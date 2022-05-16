@@ -15,7 +15,7 @@
 
   &__fs {
     &-wrapper {
-      background: url("../assets/images/fs.png") no-repeat center;
+      background: url("../assets/images/fs.jpg") no-repeat center;
       background-size: cover;
       height: 650px;
     }
@@ -113,6 +113,10 @@
       margin: 0;
       cursor: pointer;
     }
+  }
+
+  &__upload-wrapper {
+    @include flex();
   }
 
   &__loader-wrapper {
